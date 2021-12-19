@@ -1,0 +1,93 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import pathconfiguration.Path;
+
+public class FbSignup {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", Path.c);
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get(Path.appurl);// facebook.signup
+
+		driver.manage().window().maximize();
+
+	WebElement FirstName	=driver.findElement(By.xpath("//input[@name='firstname']"));
+
+	FirstName.sendKeys("Deepali");
+	System.out.println("First name ="+FirstName.getText());
+		driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys("Girme");
+
+		driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys("sanjavigirme123@gmail.com");
+
+	 WebElement PassWord	=driver.findElement(By.xpath("//input[@name='reg_passwd__']"));
+		
+	 PassWord.sendKeys("abhideep3169");
+	 System.out.println("PassWord="+ PassWord.getText());
+	 
+	 //Fb date
+	 
+	WebElement date =driver.findElement(By.xpath("//select[@name='birthday_day']"));
+	 
+	 Select s = new Select(date);
+	 
+	 s.selectByVisibleText("19");
+	 System.out.println("Date of birth="+date.getText());
+	 
+	 Thread.sleep(2000);
+	 
+	 // Fb month
+	 WebElement month =driver.findElement(By.xpath("//select[@name='birthday_month']"));
+	 
+	 Select s1 = new Select(month);
+	 
+	 s1.selectByIndex(1);
+	 
+	 System.out.println("Name of month="+ month.getText());
+	 
+	 Thread .sleep(2000);
+	 
+	 //Fb year
+	 
+	WebElement year= driver.findElement(By.xpath("//select[@name='birthday_year']"));
+	
+	Select s3= new Select(year);
+	
+	s3.selectByValue("1986");
+	
+	System.out.println("Date of year="+year.getText());
+	
+	Thread.sleep(2000);
+	
+	//gender
+	
+	WebElement Gender=driver.findElement(By.xpath("//label[(text()='Female')]"));
+	Gender.click();
+	
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	}
+}
